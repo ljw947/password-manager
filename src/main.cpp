@@ -2,6 +2,8 @@
 #include <stdlib.h> // for exit
 #include <string>
 
+#include "stringUtils.h"
+
 enum CommandResult
 {
     COMMAND_SUCCESS,
@@ -30,11 +32,11 @@ void
 ShowHelp()
 {
     std::cout <<
-        "Options:" << std::endl
-        << "A: Add password" << std::endl
-        << "D: Delete password" << std::endl
-        << "L: List available passwords" << std::endl
-        << "S: Search for password" << std::endl
+        "Options:\n"
+        << "A: Add password\n"
+        << "D: Delete password\n"
+        << "L: List available passwords\n"
+        << "S: Search for password\n"
         << "Q: Quit" << std::endl;
     return;
 }
@@ -42,12 +44,17 @@ ShowHelp()
 int
 HandleCommand(const std::string& aCommand)
 {
-    std::cout << aCommand << std::endl;
-    if (aCommand == "exit" || aCommand == "quit" || aCommand == "q") {
+    // TODO: remove
+    std::string commandLower = aCommand;
+    commandLower = StringUtils::toLower(commandLower);
+    std::cout << commandLower << std::endl;
+
+    if (commandLower == "exit" || commandLower == "quit" || commandLower == "q") {
         std::cout << "Exiting." << std::endl;
         exit(EXIT_SUCCESS);
     }
-    return 0;
+
+    return 1;
 }
 
 int
@@ -65,7 +72,7 @@ main(int argc, char* argv[])
             case (COMMAND_SUCCESS):
                 continue;
             case (UNRECOGNISED_COMMAND):
-                std::cout << "Unrecognised command '" << input << "'. Type H or help for options." << std::endl;
+                std::cout << "Unrecognised command '" << input << "'. Type h or help for options." << std::endl;
         }
     }
     return 0;

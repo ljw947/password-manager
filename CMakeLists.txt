@@ -5,4 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(PasswordManager)
 
-add_executable(passwordmanager src/main.cpp)
+add_executable(
+    passwordmanager
+    src/main.cpp
+    src/stringUtils.cpp
+)
+
