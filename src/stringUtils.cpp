@@ -5,3 +5,4 @@ StringUtils::toLower(const std::string& aStringToConvert)
 {
     return aStringToConvert;
 }
+

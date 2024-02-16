@@ -22,9 +22,10 @@ enum Command
 bool
 Add()
 {
+    std::cout << "add" << std::endl;
     std::string newPassword;
     std::cin >> newPassword;
-    std::cout << newPassword << std::endl;
+    std::cout << "password is " << newPassword << std::endl;
     return true;
 }
 
@@ -47,11 +48,15 @@ HandleCommand(const std::string& aCommand)
     // TODO: remove
     std::string commandLower = aCommand;
     commandLower = StringUtils::toLower(commandLower);
-    std::cout << commandLower << std::endl;
 
     if (commandLower == "exit" || commandLower == "quit" || commandLower == "q") {
         std::cout << "Exiting." << std::endl;
         exit(EXIT_SUCCESS);
+    }
+
+    if (commandLower == "add" || commandLower == "a") {
+        Add();
+        return 0;
     }
 
     return 1;
